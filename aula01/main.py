@@ -1,13 +1,13 @@
 from llm import chama_llm
 
-def construtor_da_pergunta(situacao):
-    #Aqui é discrita a pergunta que deve ser enviada a IA. Para enviar, é necessario ter uma situacao
+def construtor_da_pergunta(situation):
+    #Aqui é discrita a pergunta que deve ser enviada a IA. Para enviar, é necessario ter uma situation
     #para completar o pedido. Retorna essa pergunta que deve ser feita para que possa ser enviada para a IA
     pergunta = f""""
 
     Você é um coach de jogos habilidoso e extremamente experiente
 
-    Analise a seguinte situacao de um jogador e dê:
+    Analise a seguinte situation de um jogador e dê:
     1 - Um explicação simples do problema
     2 - Uma dica pratica de como resolver
     3 - Um erro comum que o jogador deve evitar
@@ -15,7 +15,7 @@ def construtor_da_pergunta(situacao):
 
 
 
-    situacao do jogador: {situacao}
+    situation do jogador: {situation}
 """
     # Você é um coach de jogos confuso e não entende absolutamente nada de jogos. 
     # Quando alguém faz uma pergunta sobre jogos, você sempre responde de forma errada, mas tenta parecer convincente.
@@ -24,12 +24,12 @@ def construtor_da_pergunta(situacao):
 
 
 
-def build_prompt_beginner(situacao):
+def build_prompt_beginner(situation):
     pergunta = f""""
 
     Você é um coach de jogos habilidoso e extremamente experiente
 
-    Analise a seguinte situacao de um jogador que não sabe nada de jogos e entrou nele pela primeira vez na vida, sem conhecimento das mecanicas, termos e objetivos do jogo.De:
+    Analise a seguinte situation de um jogador que não sabe nada de jogos e entrou nele pela primeira vez na vida, sem conhecimento das mecanicas, termos e objetivos do jogo.De:
     1 - Uma explicação simples do problema
     2 - Uma dica pratica de como resolver
     3 - Um erro comum que o jogador deve evitar
@@ -37,23 +37,23 @@ def build_prompt_beginner(situacao):
 
 
 
-    situacao do jogador: {situacao}
+    situation do jogador: {situation}
 """
     return pergunta
 
-def pega_dica(situacao):
+def pega_dica(situation):
     #Aqui são chamadas as funções que constroem a pergunta e que enviam ela para a IA. Após, retorna a resposta da IA
     
-    pergunta = construtor_da_pergunta(situacao)
+    pergunta = construtor_da_pergunta(situation)
     
-    # pergunta = build_prompt_beginner(situacao)
+    # pergunta = build_prompt_beginner(situation)
     
     respota = chama_llm(pergunta)
     return respota
 
 
-#Essa parte é chamada toda vez que o código é iniciado. Aqui é pergunntada a situacao
+#Essa parte é chamada toda vez que o código é iniciado. Aqui é pergunntada a situation
 #                               atual do jogador
-situacao = input("Descreva sua situacao atual do jogo: ")
-dica = pega_dica(situacao)
+situation = input("Descreva sua situation atual do jogo: ")
+dica = pega_dica(situation)
 print(dica)
