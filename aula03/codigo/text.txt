@@ -1,0 +1,21 @@
+1 - API
+    Cliente → Pedido → API → Resposta
+
+2 - Json VS xml
+
+3 - Métodos
+
+- GET → pedir informação
+- POST → enviar informação
+
+Exemplo:
+- GET: “Qual é a mensagem?”
+- POST: “Guarda esse texto”
+
+
+
+
+fastapi = O FastAPI é o código que você escreve. Ele é o framework que define as regras da sua aplicação, as rotas e a lógica de negócio.
+uvicorn = O Uvicorn é quem "carrega" o seu código FastAPI e o coloca para rodar na internet (ou no seu computador). O Python sozinho não sabe "ouvir" requisições HTTP da web; ele precisa de um servidor para isso.
+
+pip install -r requirements.txt

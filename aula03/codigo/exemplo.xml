@@ -1,0 +1,8 @@
+<usuario>
+  <nome>Carlos</nome>
+  <idade>28</idade>
+  <habilidades>
+    <item>Python</item>
+    <item>FastAPI</item>
+  </habilidades>
+</usuario>

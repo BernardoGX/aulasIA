@@ -1,0 +1,7 @@
+{
+  "usuario": {
+    "nome": "Carlos",
+    "idade": 28,
+    "habilidades": ["Python", "FastAPI"]
+  }
+}
