@@ -23,12 +23,16 @@ def status():
 # --------------------
 @app.post("/message")  # Decorator que define uma rota POST em "/message"
 async def receive_message(request: Request):  # Função assíncrona que recebe uma requisição
-    data = await request.json()  # Aguarda e extrai o corpo JSON da requisição
+    print("Teste 1")
+    data = await request.json() # Aguarda e extrai o corpo JSON da requisição
+    print("Teste 2")
     text = data.get("text", "") # Obtém o valor do campo "text", retorna string vazia se não existir
-    if text =="s":
+    print("Teste 3")
+    if text =="":
+        print("Teste 4")
         return {"message":"Nenhum texto reccebido"}
     else:  
-
+        print("Teste 5")
         return {  # Retorna um objeto JSON com os dados processados
             "received_text": text,  # Texto recebido na requisição
             "length": len(text),# Comprimento do texto em caracteres
