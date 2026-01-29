@@ -107,6 +107,118 @@ async def min_number(request:Request):
     min_num = min(numbers)
     return {"response": min_num}
 
+@app.post("/name")
+async def name(request:Request):
+    data = await request.json()
+    nametxt = data.get("name","")
+    return {"response": f"Olá {nametxt}, bem vindo a minha API!"}
+
+@app.post("/square")
+async def square(request:Request):
+    data = await request.json()
+    number = data.get("number", 0)
+    quadrado = number * number
+    return {"response": quadrado}
+
+@app.post("/triangle")
+async def triangle(request:Request):
+    data = await request.json()
+    base = data.get("base", 1)
+    height = data.get("height",1)
+    area = base * height /2
+    return {"response": area} 
+
+@app.post("/age_verification")
+async def age_verification(request:Request):
+    data = await request.json()
+    age = data.get("age", 1)
+    if age < 18:
+        return {"response": "menor de idade"}
+    else:
+        return {"response": "maior de idade"}
+    
+
+@app.post("/calculator")
+async def calculator(request:Request):
+    data = await request.json()
+    num1 = data.get("num1", 1)
+    num2 = data.get("num2", 1)
+    operation = data.get("operation", "+")
+    match operation:
+        case "soma":
+            return {"response":num1 + num2 }
+        case "sub":
+            return {"response":num1 - num2}
+        case "mult":
+            return {"response":num1 * num2}
+        case "div":
+            return {"response":num1 / num2}
+
+@app.post("/total_letters")
+async def total_letters(request:Request):
+    data = await request.json()
+    text = data.get("text", "")
+    return {"response", len(text.replace(" ", ""))}
+
+@app.post("/no_spaces")
+async def no_spaces(request:Request):
+    data = await request.json()
+    text = data.get("text","")
+    return {"response", text.replace(" ", "")}
+    
+@app.post("/double_list")
+async def double_list(request:Request):
+    data = await request.json()
+    numbers = data.get("numbers", [])
+    double_num_list = []
+    for num in numbers:
+        double_num_list.append(num * 2)
+    return {"response": double_num_list}
+
+@app.post("/strong_password")
+async def strong_password(request:Request):
+    data = await request.json()
+    password = data.get("password")
+    if len(password) <8:
+        return {"response":"Senha fraca"}
+    else:
+        return {"response":"Senha forte"}
+    
+@app.post("/multiplication_table")
+async def multiplication_table(request:Request):
+    data = await request.json()
+    number = data.get("number", 1)
+    multiplication_table = []
+    times_1 = number *1
+    multiplication_table.append(times_1)
+    times_2 = number *2
+    multiplication_table.append(times_2)
+    times_3 = number *3
+    multiplication_table.append(times_3)
+    times_4 = number *4
+    multiplication_table.append(times_4)
+    times_5 = number *5
+    multiplication_table.append(times_5)
+    times_6 = number *6
+    multiplication_table.append(times_6)
+    times_7 = number *7
+    multiplication_table.append(times_7)
+    times_8 = number *8
+    multiplication_table.append(times_8)
+    times_9 = number *9
+    multiplication_table.append(times_9)
+    times_10 = number *10
+    multiplication_table.append(times_10)
+    return {"response":multiplication_table}
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
